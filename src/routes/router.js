@@ -19,6 +19,12 @@ export const router = createBrowserRouter([
             {
                 path: '/room/:id',
             },
+            {
+                path: '/blogs',
+            },
+            {
+                path: '/contact',
+            },
         ]
     }
 ])
