@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FeaturedRoom from '../../components/FeaturedRoom/FeaturedRoom';
 
 const Home = () => {
     return (
@@ -40,19 +39,15 @@ const Home = () => {
                             </p>
                             <div className="flex items-center">
                                 <Link
-                                    to="/"
+                                    to="/booking"
                                     className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-700 hover:bg-blue-800 focus:shadow-outline focus:outline-none"
                                 >
-                                    Get started
+                                    Booking Now
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <section className='container mx-auto my-24'>
-                <h2 className='text-3xl font-bold mb-5'>Featured Rooms</h2>
             </section>
         </main>
     );

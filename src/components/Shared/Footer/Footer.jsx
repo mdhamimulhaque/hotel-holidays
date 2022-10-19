@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
 
-        <footer className="p-4 bg-gray-300 rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
+        <footer className="p-4 bg-blue-200 rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
             <div className="sm:flex sm:items-center sm:justify-between">
                 <a href="https://flowbite.com/" className="flex items-center mb-4 sm:mb-0">
                     <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-8" alt="Flowbite Logo" />
@@ -18,7 +18,7 @@ const Footer = () => {
                         <Link to="/rooms" className="mr-4 hover:underline md:mr-6">Rooms</Link>
                     </li>
                     <li>
-                        <Link to="/blogs" className="mr-4 hover:underline md:mr-6 ">Blogs</Link>
+                        <Link to="/booking" className="mr-4 hover:underline md:mr-6 ">Booking</Link>
                     </li>
                     <li>
                         <Link to="/contact" className="hover:underline">Contact</Link>
