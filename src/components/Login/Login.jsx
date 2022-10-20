@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UserContext';
 
 const Login = () => {
     const { logInUser } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
 
     // ---> handle log in
-    const handleLogIn = (e) => {
+    const handleLogInSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
@@ -15,7 +19,9 @@ const Login = () => {
         logInUser(email, password)
             .then((res) => {
                 const user = res.user;
-                console.log("LogIn successfully", user)
+                console.log("LogIn successfully", user);
+                form.reset();
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 console.error(error)
@@ -53,7 +59,7 @@ const Login = () => {
             <div className="flex items-center w-full my-4">
                 <p className="px-3 dark:text-gray-400">OR</p>
             </div>
-            <form onSubmit={handleLogIn} className="space-y-8 ng-untouched ng-pristine ng-valid">
+            <form onSubmit={handleLogInSubmit} className="space-y-8 ng-untouched ng-pristine ng-valid">
                 <div className="space-y-4">
                     <div className="space-y-2">
                         <label htmlFor="email" className="block text-sm">Email address</label>

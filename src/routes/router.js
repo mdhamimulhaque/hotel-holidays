@@ -3,11 +3,11 @@ import Booking from "../components/Booking/Booking";
 import Room from "../components/FeaturedRoom/FeaturedRoom";
 import Login from "../components/Login/Login";
 import Registration from "../components/Registration/Registration";
-import RoomDetails from "../components/RoomDetails/RoomDetails";
 import Main from "../layouts/Main";
 import Error from "../Pages/Error/Error";
 import Home from "../Pages/Home/Home";
 import Rooms from "../Pages/Rooms/Rooms";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/booking',
-                element: <Booking />
+                element: <PrivateRoute><Booking /></PrivateRoute>
             },
             {
                 path: '/contact',
