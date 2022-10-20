@@ -9,7 +9,7 @@ const Rooms = () => {
         <section className='container mx-auto py-24'>
             <div className="featured_room flex justify-between gap-10">
                 {
-                    data.map(room => <FeaturedRoom room={room} />)
+                    data.map(room => <FeaturedRoom key={room._id} room={room} />)
                 }
             </div>
         </section>

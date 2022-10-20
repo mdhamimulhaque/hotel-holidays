@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../../Context/UserContext';
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    // ---> handle log out
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log("log our successfully")
+            }).catch((error) => {
+                console.error(error)
+            });
+    }
+
     return (
         <header>
             <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 bg-blue-200">
@@ -11,13 +26,23 @@ const Header = () => {
                         <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Hotel Holidays</span>
                     </Link>
                     <div className="flex md:order-2">
-                        <Link to="/registration">
-                            <button type="button" className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-700 hover:bg-blue-800 focus:shadow-outline focus:outline-none">Registration</button>
-                        </Link>
+                        {
+                            user?.email
+                                ? <Link to="/">
+                                    <button onClick={handleLogOut} type="button" className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-red-700 hover:bg-red-800 focus:shadow-outline focus:outline-none">Log Out</button>
+                                </Link>
+                                :
+                                <div>
+                                    <Link to="/registration">
+                                        <button type="button" className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-700 hover:bg-blue-800 focus:shadow-outline focus:outline-none">Registration</button>
+                                    </Link>
 
-                        <Link to="/log-in">
-                            <button type="button" className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-700 hover:bg-blue-800 focus:shadow-outline focus:outline-none">Log in</button>
-                        </Link>
+                                    <Link to="/log-in">
+                                        <button type="button" className="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-700 hover:bg-blue-800 focus:shadow-outline focus:outline-none">Log in</button>
+                                    </Link>
+                                </div>
+                        }
+
 
 
                         <button data-collapse-toggle="navbar-cta" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
